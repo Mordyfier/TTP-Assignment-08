@@ -5,9 +5,13 @@ class Table extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            columns : 1,
             rows : []
         }
+        this.addColumn = this.addColumn.bind(this);
+        this.removeColumn = this.removeColumn.bind(this);
     }
+
     componentDidUpdate(prevProps) {
         if (this.props.rows < prevProps.rows) {
             this.setState(prevState => ({
@@ -16,18 +20,36 @@ class Table extends React.Component {
         } else if (this.props.rows > prevProps.rows) {
             this.setState(prevState => ({
                 rows: [
-                ...prevState.rows, 
-                <TableRow key={this.props.rows} columns={this.props.columns} />
+                    ...prevState.rows, 
+                    <TableRow key={this.props.rows + this.state.columns} columns={this.state.columns} />
                 ]
             }));
-            console.log(this.state.rows)
         }
     }
+
+    addColumn() {
+        this.setState(prevState => ({
+          columns: prevState.columns + 1
+        }))
+    }
+      
+    removeColumn() {
+        if (this.state.columns > 0) {
+            this.setState(prevState => ({
+                columns: prevState.columns - 1
+            }))
+        }
+    }
+
     render() {
         return (
-            <div className="grid">
-                {this.state.rows}
-            </div>
+            <>
+                <button onClick={this.addColumn}>Add Column</button>
+                <button onClick={this.removeColumn}>Remove Column</button>
+                <div className="grid" key={-1}>
+                    {this.state.rows}
+                </div>
+            </>
         )
     }
 }
