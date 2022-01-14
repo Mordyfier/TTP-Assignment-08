@@ -26,8 +26,8 @@
 
 td {
   border: 2px solid black;
-  width: 7px;
-  height: 7px;
+  width: 15px;
+  height: 15px;
 }
 
 table{
@@ -43,6 +43,9 @@ table{
   margin-right: 40px;
 }
 
+button{
+  margin-right: 10px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
