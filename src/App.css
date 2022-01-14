@@ -24,8 +24,23 @@
   color: white;
 }
 
+td {
+  border: 2px solid black;
+  width: 7px;
+  height: 7px;
+}
+
+table{
+  margin-left: 100px;
+  margin-top: 25px ;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+#color-select{
+  margin-right: 40px;
 }
 
 @keyframes App-logo-spin {
