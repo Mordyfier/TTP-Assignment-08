@@ -4,6 +4,8 @@ export default function Table(props){
     
 
     return(
-        <table>{props.populate}</table>
+        <div className="grid">
+            <table>{props.populate}</table>
+        </div>
     )
 }
