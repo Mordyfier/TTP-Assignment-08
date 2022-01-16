@@ -48,6 +48,8 @@ class App extends Component {
       <div className="App">
         <button onClick={this.addRow}>ADD ROW</button>
         <button onClick={this.addCol}>ADD COLUMN</button>
+        <br></br>
+        <input type="color" className='color-select'/>
         <Table populate={this.renderTable()}/>
       </div>
     )
