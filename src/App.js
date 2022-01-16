@@ -1,10 +1,10 @@
 import React from 'react';
-import Table from './components/Table'
 import './App.css';
 import { Component } from 'react';
-import Cell from './src/Cell'
-import Table from './src/Table'
-import TableRow from './src/TableRow'
+import Cell from './components/Cell'
+import Table from './components/Table'
+import TableRow from './components/TableRow'
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -15,6 +15,7 @@ class App extends Component {
     })
     this.renderTable = this.renderTable.bind(this)
     this.addRow = this.addRow.bind(this)
+    this.removeRow = this.removeRow.bind(this)
     this.addCol = this.addCol.bind(this)
     this.colorOnClick = this.colorOnClick.bind(this)
     this.changeColorState = this.changeColorState.bind(this)
@@ -43,9 +44,14 @@ class App extends Component {
     this.setState({rowsNum: this.state.rowsNum + 1})
   }
 
+  removeRow(){
+    this.setState({rowsNum: this.state.rowsNum - 1})
+  }
+
   addCol(){
     this.setState({cellsNum: this.state.cellsNum + 1})
   }
+
   
   colorOnClick(e){
     e.preventDefault()
@@ -53,16 +59,21 @@ class App extends Component {
   }
 
   changeColorState(){
-    this.setState({color: document.querySelector(".color-select").value})
+    this.setState({color: document.querySelector(".color-selector").value})
   }
 
   render(){
     return (
       <div className="App">
-        <button onClick={this.addRow}>ADD ROW</button>
-        <button onClick={this.addCol}>ADD COLUMN</button>
-        <br></br>
-        <input type="color" onChange={this.changeColorState} className='color-select'/>
+        <div className='controls'>
+          <button onClick={this.addRow}>ADD ROW</button>
+          <button onClick={this.removeRow}>REMOVE ROW</button>
+          <button onClick={this.addCol}>ADD COLUMN</button>
+          <div className='color-select'>
+            <h5>Select Color</h5>
+            <input type="color" onChange={this.changeColorState} className='color-selector'/>
+          </div>
+        </div>
         <Table populate={this.renderTable()}/>
       </div>
     )

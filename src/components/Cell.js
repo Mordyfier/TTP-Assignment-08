@@ -1,15 +1,7 @@
 import React from "react";
 
-class Cell extends React.Component {
-    constructor() {
-        super();
-        this.state = {color : 'white'}
-    }
-    render() {
-        return (
-            <div className="cell" ></div>
-        )
-    }
+export default function Cell(props){
+    return(
+        <td onClick={props.onClick} className="cell"></td>
+    )
 }
-
-export default Cell;
