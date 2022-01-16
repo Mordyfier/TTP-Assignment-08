@@ -1,25 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import Cell from './src/Cell'
+import Table from './src/Table'
+import TableRow from './src/TableRow'
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = ({
+      rowsNum: 1,
+      cellsNum: 1,
+      color: ""
+    })
+    this.renderTable = this.renderTable.bind(this)
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  renderTable(){
+    let tableInfo = []
+    for(let i=0; i<this.state.rowsNum; i++){
+      let newRow = []
+      for(let k=0; k<this.state.cellsNum; k++){
+        newRow.push(
+          //add onclick here for each cell to change color onclick
+          <Cell/>
+        )
+      tableInfo.push(
+        <TableRow info={newRow}/>
+      )
+      }
+    }
+    return tableInfo
+
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Table populate={this.renderTable()}/>
+      </div>
+    )
+  }
+ 
 }
 
 export default App;
