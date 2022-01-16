@@ -21,7 +21,7 @@ class App extends Component {
       let newRow = []
       for(let k=0; k<this.state.cellsNum; k++){
         newRow.push(
-          //add onclick here for each cell to change color onclick
+          //add onclick here for each cell to change color on a click. 
           <Cell/>
         )
       tableInfo.push(
