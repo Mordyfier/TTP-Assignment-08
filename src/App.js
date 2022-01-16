@@ -13,6 +13,7 @@ class App extends Component {
       color: ""
     })
     this.renderTable = this.renderTable.bind(this)
+    this.addRow = this.addRow.bind(this)
   }
 
   renderTable(){
@@ -32,10 +33,15 @@ class App extends Component {
     return tableInfo
 
   }
+  
+  addRow(){
+    this.setState({rowsNum: this.state.rowsNum + 1})
+  }
 
   render(){
     return (
       <div className="App">
+        <button onClick={this.addRow}>ADD ROW</button>
         <Table populate={this.renderTable()}/>
       </div>
     )
