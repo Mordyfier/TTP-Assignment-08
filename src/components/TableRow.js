@@ -1,8 +1,12 @@
 import React from "react";
 
 
-export default function Table(props){
-    return(
-            <tr>{props.info}</tr>
-    )
+class TableRow extends React.Component {
+    render() {
+        return (
+            <tr>{this.props.info}</tr>
+        )
+    }
 }
+
+export default TableRow;
