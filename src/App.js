@@ -21,6 +21,7 @@ class App extends Component {
     this.removeCol = this.removeCol.bind(this)
     this.colorOnClick = this.colorOnClick.bind(this)
     this.changeColorState = this.changeColorState.bind(this)
+    this.fillUncolored = this.fillUncolored.bind(this)
     this.fillAll = this.fillAll.bind(this)
     this.clearAll = this.clearAll.bind(this)
 
@@ -72,6 +73,16 @@ class App extends Component {
     this.setState({color: document.querySelector(".color-selector").value})
   }
 
+  fillUncolored(){
+    let arr = document.querySelectorAll(".cell")
+
+    for(const element of arr){
+      if(element.style.backgroundColor == "white"){
+        element.style.backgroundColor = this.state.color;
+      } 
+    }
+  }
+
   fillAll() {
     let arr = document.querySelectorAll(".cell")
 
@@ -98,6 +109,7 @@ class App extends Component {
           <button onClick={this.removeRow}>REMOVE ROW</button>
           <button onClick={this.addCol}>ADD COLUMN</button>
           <button onClick={this.removeCol}>REMOVE COLUMN</button>
+          <button onClick={this.fillUncolored}>FILL UNCOLORED</button>
           <button onClick={this.fillAll}>FILL ALL</button>
           <button onClick={this.clearAll}>CLEAR ALL</button>
           <div className='color-select'>
