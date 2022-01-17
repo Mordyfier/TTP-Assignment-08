@@ -25,8 +25,19 @@ body {
   font-size: 15px;
   word-spacing: 3px;
   letter-spacing: 1px;
-  background-color: rgb(45, 100, 145);
+  background-color: cornflowerblue;
   color: whitesmoke;
+  cursor: pointer;
+}
+
+.controls > button:hover {
+  background-color: goldenrod;
+  color: #333;
+}
+
+.controls > button:active {
+  background-color: orangered;
+  color:#333;
 }
 
 .color-select {
@@ -49,6 +60,7 @@ body {
 }
 
 .color-selector {
+  cursor: pointer;  
   border: none;
   border-radius: 5px;
   background-color: #666; /* ??? */
