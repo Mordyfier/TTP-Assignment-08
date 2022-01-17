@@ -1,11 +1,18 @@
-import react from "react";
-import App from '../App'
-export default function Table(props){
-    
+import React from "react";
 
-    return(
-        <div className="grid">
-            <table>{props.populate}</table>
-        </div>
-    )
+
+class Table extends React.Component {
+    render() {
+        return (
+            <div className="grid">
+                <table>
+                    <tbody>
+                        {this.props.populate}
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
 }
+
+export default Table;
