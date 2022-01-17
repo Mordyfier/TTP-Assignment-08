@@ -16,33 +16,61 @@ body {
   margin-right: 10px;
   border-radius: 5px;
   border: none;
+  width: 8%;
   max-width: 500px;
-  height: 40px;
+  height: 50%;
   padding: 0 20px;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
   font-size: 15px;
   word-spacing: 3px;
   letter-spacing: 1px;
-  background-color: rgb(45, 100, 145);
+  background-color: cornflowerblue;
   color: whitesmoke;
+  cursor: pointer;
+}
+
+.controls > button:hover {
+  background-color: goldenrod;
+  color: #333;
+}
+
+.controls > button:active {
+  background-color: orangered;
+  color:#333;
 }
 
 .color-select {
   display: flex;
+  height: 50%;
+  width: 8%;
+  align-items: center;
   flex-direction: column;
   margin: none;
+  background-color: #666;
+  border-radius: 5px;
+}
+
+.color-select > h5 {
+  margin: none;
+  margin-block: 0px 5px;
+  padding-left: 5px;
+  height: 25%;
+  color: whitesmoke;
 }
 
 .color-selector {
+  cursor: pointer;  
   border: none;
   border-radius: 5px;
-  min-width: 100px;
-  max-width: 500px;
-  height: 30px;
   background-color: #666; /* ??? */
   color: whitesmoke;
-  margin-right: 10px;
+  height: 60%;
+  width: 80%;
+}
+
+.color-selector:hover {
+  background-color: #333;
 }
 
 .grid {
@@ -50,7 +78,6 @@ body {
   margin-left: 100px;
   user-select: none; /* disables dragging of the grid parent which messed with drag-colouring */
 }
-
 
 .cell {
   border: none;
