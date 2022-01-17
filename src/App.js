@@ -11,7 +11,7 @@ class App extends Component {
     this.state = ({
       rowsNum: 1,
       cellsNum: 1,
-      color: "",
+      color: "#ff0000",
       table : []
     })
     this.renderTable = this.renderTable.bind(this)
@@ -109,7 +109,7 @@ class App extends Component {
           <button onClick={this.clearAll}>CLEAR ALL</button>
           <div className='color-select'>
             <h5>Select Color</h5>
-            <input type="color" onChange={this.changeColorState} className='color-selector'/>
+            <input type="color" onChange={this.changeColorState} className='color-selector' value={this.state.color}/>
           </div>
         </div>
         <Table populate={this.renderTable()}/>
