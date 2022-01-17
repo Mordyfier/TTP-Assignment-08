@@ -1,9 +1,89 @@
-.App {
-  text-align: center;
+body {
+  margin: none;
+  background-color: #333;
+  font-family: 'Raleway', sans-serif;
 }
 
-td{
-  border: 2px solid black;
-  width: 10px;
-  height: 10px;
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 100px;
+}
+
+.controls > button {
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 8%;
+  max-width: 500px;
+  height: 50%;
+  padding: 0 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  word-spacing: 3px;
+  letter-spacing: 1px;
+  background-color: cornflowerblue;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.controls > button:hover {
+  background-color: goldenrod;
+  color: #333;
+}
+
+.controls > button:active {
+  background-color: orangered;
+  color:#333;
+}
+
+.color-select {
+  display: flex;
+  height: 50%;
+  width: 8%;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 10px;
+  background-color: #666;
+  border-radius: 5px;
+}
+
+.color-select > h5 {
+  margin-block: 0px 5px;
+  padding-left: 5px;
+  height: 25%;
+  color: whitesmoke;
+}
+
+.color-selector {
+  cursor: pointer;  
+  border: none;
+  border-radius: 5px;
+  background-color: #666; /* ??? */
+  color: whitesmoke;
+  height: 60%;
+  width: 80%;
+}
+
+.color-selector:hover {
+  background-color: #333;
+}
+
+.grid {
+  display: flex;
+  margin-left: 100px;
+  user-select: none; /* disables dragging of the grid parent which messed with drag-colouring */
+}
+
+.cell {
+  border: none;
+  border-radius: 5px;
+  width: 65px;
+  height: 65px;
+  margin-left: 3px;
+  margin-top: 3px;
+  background-color: white;
 }
