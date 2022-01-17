@@ -24,8 +24,6 @@ class App extends Component {
     this.fillUncolored = this.fillUncolored.bind(this)
     this.fillAll = this.fillAll.bind(this)
     this.clearAll = this.clearAll.bind(this)
-
-    this.cellElement = React.createRef();
   }
 
   renderTable(){
@@ -50,6 +48,7 @@ class App extends Component {
   
   addRow(){
     this.setState({rowsNum: this.state.rowsNum + 1})
+    
   }
 
   removeRow(){
@@ -77,26 +76,22 @@ class App extends Component {
     let arr = document.querySelectorAll(".cell")
 
     for(const element of arr){
-      if(element.style.backgroundColor == "white"){
+      if(element.style.backgroundColor === ""){
         element.style.backgroundColor = this.state.color;
       } 
     }
   }
 
   fillAll() {
-    let arr = document.querySelectorAll(".cell")
-
-    console.log(arr);
+    let arr = document.querySelectorAll(".cell");
 
     arr.forEach(element => element.style.backgroundColor = this.state.color);
   }
 
   clearAll() {
-    let arr = document.querySelectorAll(".cell")
+    let arr = document.querySelectorAll(".cell");
 
-    console.log(arr);
-
-    arr.forEach(element => element.style.backgroundColor = "white");
+    arr.forEach(element => element.style.backgroundColor = "");
   }
 
   render(){
