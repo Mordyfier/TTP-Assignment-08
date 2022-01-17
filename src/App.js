@@ -17,6 +17,7 @@ class App extends Component {
     this.addRow = this.addRow.bind(this)
     this.removeRow = this.removeRow.bind(this)
     this.addCol = this.addCol.bind(this)
+    this.removeCol = this.removeCol.bind(this)
     this.colorOnClick = this.colorOnClick.bind(this)
     this.changeColorState = this.changeColorState.bind(this)
   }
@@ -52,6 +53,10 @@ class App extends Component {
     this.setState({cellsNum: this.state.cellsNum + 1})
   }
 
+  removeCol(){
+    this.setState({cellsNum: this.state.cellsNum - 1})
+  }
+
   
   colorOnClick(e){
     e.preventDefault()
@@ -69,6 +74,7 @@ class App extends Component {
           <button onClick={this.addRow}>ADD ROW</button>
           <button onClick={this.removeRow}>REMOVE ROW</button>
           <button onClick={this.addCol}>ADD COLUMN</button>
+          <button onClick={this.removeCol}>REMOVE COLUMN</button>
           <div className='color-select'>
             <h5>Select Color</h5>
             <input type="color" onChange={this.changeColorState} className='color-selector'/>
