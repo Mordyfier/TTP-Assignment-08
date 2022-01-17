@@ -46,13 +46,12 @@ body {
   width: 8%;
   align-items: center;
   flex-direction: column;
-  margin: none;
+  margin-right: 10px;
   background-color: #666;
   border-radius: 5px;
 }
 
 .color-select > h5 {
-  margin: none;
   margin-block: 0px 5px;
   padding-left: 5px;
   height: 25%;

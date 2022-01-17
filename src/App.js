@@ -8,8 +8,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      rowsNum: 1,
-      cellsNum: 1,
+      rowsNum: 0,
+      cellsNum: 0,
       color: "#ffffff",
       mouseDown: false
     });
@@ -34,8 +34,6 @@ class App extends Component {
           //add onclick here for each cell to change color on a click. 
           <Cell 
             key={1000+k} 
-            onMouseDown={this.mouseDrag} 
-            onMouseUp={this.mouseDrag} 
             onMouseEnter={this.colorOnMouseEnter} 
           />
         );
@@ -51,7 +49,12 @@ class App extends Component {
   }
   
   addRow(){
-    this.setState({rowsNum: this.state.rowsNum + 1});
+    if (this.state.cellsNum > 0) {
+      this.setState({rowsNum: this.state.rowsNum + 1});
+    }
+    if (this.state.rowsNum === 0 || this.state.cellsNum === 0) {
+      this.setState({rowsNum:1, cellsNum:1})
+    }
   }
 
   removeRow(){
@@ -64,10 +67,15 @@ class App extends Component {
     if (this.state.rowsNum > 0) {
       this.setState({cellsNum: this.state.cellsNum + 1});
     }
+    if (this.state.rowsNum === 0 || this.state.cellsNum === 0) {
+      this.setState({rowsNum:1, cellsNum:1})
+    }
   }
 
   removeCol(){
-    this.setState({cellsNum: this.state.cellsNum - 1})
+    if (this.state.cellsNum > 0) {
+      this.setState({cellsNum: this.state.cellsNum - 1})
+    }
   }
 
   colorOnMouseEnter(e){
@@ -78,7 +86,7 @@ class App extends Component {
   }
 
   mouseDrag(e) {
-    if (e.type === 'mousedown') {
+    if (e.type === 'mousedown' && e.target.className === 'cell') {
       e.target.style.backgroundColor = this.state.color;
       if (!this.state.mouseDown) {
         this.setState({mouseDown: true});
@@ -91,17 +99,6 @@ class App extends Component {
   changeColorState(){
     this.setState({color: document.querySelector(".color-selector").value});
   }
-
-  fillUncolored(){
-    let arr = document.querySelectorAll(".cell")
-
-    for(const element of arr){
-      if(element.style.backgroundColor === ""){
-        element.style.backgroundColor = this.state.color;
-      } 
-    }
-  }
-
 
   fillUncolored(){
     let arr = document.querySelectorAll(".cell")
@@ -135,15 +132,19 @@ class App extends Component {
           <button onClick={this.removeRow}>Remove Row</button>
           <button onClick={this.addCol}>Add Column</button>
           <button onClick={this.removeCol}>Remove Column</button>
-          <button onClick={this.fillUncolored}>Fill Uncolored</button>
-          <button onClick={this.fillAll}>Fill All</button>
-          <button onClick={this.clearAll}>Clear All</button>
           <div className='color-select'>
             <h5>Select Colour:</h5>
             <input type="color" onChange={this.changeColorState} className='color-selector' value={this.state.color}/>
           </div>
+          <button onClick={this.fillUncolored}>Fill Uncolored</button>
+          <button onClick={this.fillAll}>Fill All</button>
+          <button onClick={this.clearAll}>Clear All</button>
         </div>
-        <Table populate={this.renderTable()} />
+        <Table 
+          populate={this.renderTable()}
+          onMouseDown={this.mouseDrag} 
+          onMouseUp={this.mouseDrag} 
+        />
       </div>
     )
   }
