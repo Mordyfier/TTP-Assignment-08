@@ -10,7 +10,7 @@ class App extends Component {
     this.state = ({
       rowsNum: 0,
       cellsNum: 1,
-      color: "",
+      color: "#FFFFFF",
       mouseDown: false
     });
     this.renderTable = this.renderTable.bind(this);
@@ -71,7 +71,7 @@ class App extends Component {
   }
 
   mouseDrag(e) {
-    if (e.type === 'mousedown') {
+    if (e.type === 'mousedown' && e.target.className === 'cell') {
       e.target.style.backgroundColor = this.state.color;
       if (!this.state.mouseDown) {
         this.setState({mouseDown: true});
@@ -94,10 +94,10 @@ class App extends Component {
           <button onClick={this.addCol}>Add Column</button>
           <div className='color-select'>
             <h5>Select Colour:</h5>
-            <input type="color" onChange={this.changeColorState} className='color-selector'/>
+            <input type="color" value={this.state.color} onChange={this.changeColorState} className='color-selector'/>
           </div>
         </div>
-        <Table populate={this.renderTable()} />
+        <Table populate={this.renderTable()} onMouseDown={this.mouseDrag} onMouseUp={this.mouseDrag} />
       </div>
     )
   }
