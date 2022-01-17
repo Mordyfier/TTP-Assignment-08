@@ -3,7 +3,7 @@ import React from "react";
 class Cell extends React.Component {
     render() {
         return (
-            <td onClick={this.props.onClick} onMouseEnter={this.props.onMouseEnter} className="cell"></td>
+            <td className="cell" onMouseEnter={this.props.onMouseEnter} onMouseDown={this.props.onMouseDown} onMouseUp={this.props.onMouseUp} ></td>
         )
     }
 }
