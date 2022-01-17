@@ -1,7 +1,8 @@
 import React from "react";
 
 
-export default function Table(props){
+export default function TableRow(props){
+    
     return(
             <tr>{props.info}</tr>
     )
