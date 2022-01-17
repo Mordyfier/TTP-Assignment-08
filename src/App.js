@@ -10,7 +10,7 @@ class App extends Component {
     this.state = ({
       rowsNum: 1,
       cellsNum: 1,
-      color: "",
+      color: "#ffffff",
       mouseDown: false
     });
     this.renderTable = this.renderTable.bind(this);
@@ -20,6 +20,7 @@ class App extends Component {
     this.removeCol = this.removeCol.bind(this)
     this.colorOnMouseEnter = this.colorOnMouseEnter.bind(this);
     this.changeColorState = this.changeColorState.bind(this);
+    this.fillUncolored = this.fillUncolored.bind(this)
     this.mouseDrag = this.mouseDrag.bind(this);
   }
 
@@ -100,6 +101,17 @@ class App extends Component {
     }
   }
 
+
+  fillUncolored(){
+    let arr = document.querySelectorAll(".cell")
+
+    for(const element of arr){
+      if(element.style.backgroundColor === ""){
+        element.style.backgroundColor = this.state.color;
+      } 
+    }
+  }
+
   fillAll() {
     let arr = document.querySelectorAll(".cell");
 
@@ -122,9 +134,10 @@ class App extends Component {
           <button onClick={this.removeRow}>Remove Row</button>
           <button onClick={this.addCol}>Add Column</button>
           <button onClick={this.removeCol}>Remove Column</button>
+          <button onClick={this.fillUncolored}>Fill Uncolored</button>
           <div className='color-select'>
             <h5>Select Colour:</h5>
-            <input type="color" onChange={this.changeColorState} className='color-selector'/>
+            <input type="color" onChange={this.changeColorState} className='color-selector' value={this.state.color}/>
           </div>
         </div>
         <Table populate={this.renderTable()} />
