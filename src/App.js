@@ -1,39 +1,41 @@
-import React from 'react';
-import './App.css';
-import { Component } from 'react';
+import React , { Component } from 'react';
 import Cell from './components/Cell'
 import Table from './components/Table'
 import TableRow from './components/TableRow'
+import './App.css';
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = ({
-      rowsNum: 1,
+      rowsNum: 0,
       cellsNum: 1,
-      color: ""
+      color: "",
+      mouseDown: false
     })
     this.renderTable = this.renderTable.bind(this)
     this.addRow = this.addRow.bind(this)
     this.removeRow = this.removeRow.bind(this)
     this.addCol = this.addCol.bind(this)
-    this.colorOnClick = this.colorOnClick.bind(this)
+    // this.colorOnClick = this.colorOnClick.bind(this)
+    this.colorOnMouseEnter = this.colorOnMouseEnter.bind(this)
     this.changeColorState = this.changeColorState.bind(this)
+    this.mouseDrag = this.mouseDrag.bind(this);
   }
 
   renderTable(){
     let tableInfo = []
-    for(let i=0; i<this.state.rowsNum; i++){
+    for(let i = 0; i < this.state.rowsNum; i++){
       let newRow = []
-      for(let k=0; k<this.state.cellsNum; k++){
+      for(let k = 0; k < this.state.cellsNum; k++){
         newRow.push(
           //add onclick here for each cell to change color on a click. 
-          <Cell onClick={this.colorOnClick}/>
+          <Cell key={1000+k} onClick={this.colorOnClick} onMouseEnter={this.colorOnMouseEnter} />
         )
      
       }
       tableInfo.push(
-        <TableRow info={newRow}/>
+        <TableRow key={i} info={newRow}/>
       )
     }
     return tableInfo
@@ -45,22 +47,42 @@ class App extends Component {
   }
 
   removeRow(){
-    this.setState({rowsNum: this.state.rowsNum - 1})
+    if (this.state.rowsNum > 0) {
+      this.setState({rowsNum: this.state.rowsNum - 1})
+    }
   }
 
   addCol(){
-    this.setState({cellsNum: this.state.cellsNum + 1})
+    if (this.state.rowsNum > 0) {
+      this.setState({cellsNum: this.state.cellsNum + 1})
+    }
   }
 
-  
-  colorOnClick(e){
+  // colorOnClick(e){
+  //   e.preventDefault()
+  //   e.target.style.backgroundColor = this.state.color
+  // }
+
+  colorOnMouseEnter(e){
     e.preventDefault()
-    e.target.style.backgroundColor = this.state.color
+    if (this.state.mouseDown) {
+      e.target.style.backgroundColor = this.state.color
+    }
+  }
+
+  mouseDrag(e) {
+    if (e.type === 'mousedown') {
+      e.target.style.backgroundColor = this.state.color
+      this.setState({mouseDown: true})
+    } else {
+      this.setState({mouseDown: false})
+    }
   }
 
   changeColorState(){
     this.setState({color: document.querySelector(".color-selector").value})
   }
+
 
   render(){
     return (
@@ -74,7 +96,7 @@ class App extends Component {
             <input type="color" onChange={this.changeColorState} className='color-selector'/>
           </div>
         </div>
-        <Table populate={this.renderTable()}/>
+        <Table populate={this.renderTable()} onMouseDown={this.mouseDrag} onMouseUp={this.mouseDrag} />
       </div>
     )
   }
