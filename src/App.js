@@ -11,7 +11,7 @@ class App extends Component {
     this.state = ({
       rowsNum: 1,
       cellsNum: 1,
-      color: "#ff0000",
+      color: "#ffffff",
       table : []
     })
     this.renderTable = this.renderTable.bind(this)
