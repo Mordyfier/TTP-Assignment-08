@@ -21,6 +21,7 @@ class App extends Component {
     this.colorOnMouseEnter = this.colorOnMouseEnter.bind(this);
     this.changeColorState = this.changeColorState.bind(this);
     this.fillUncolored = this.fillUncolored.bind(this)
+    this.fillAll = this.fillAll.bind(this)
     this.mouseDrag = this.mouseDrag.bind(this);
   }
 
@@ -135,6 +136,8 @@ class App extends Component {
           <button onClick={this.addCol}>Add Column</button>
           <button onClick={this.removeCol}>Remove Column</button>
           <button onClick={this.fillUncolored}>Fill Uncolored</button>
+          <button onClick={this.fillAll}>Fill All</button>
+          <button onClick={this.clearAll}>Clear All</button>
           <div className='color-select'>
             <h5>Select Colour:</h5>
             <input type="color" onChange={this.changeColorState} className='color-selector' value={this.state.color}/>
