@@ -1,7 +1,11 @@
 import React, {useState} from "react";
 
-export default function Cell(props){
-    return(
-        <td onClick={props.onClick} className="cell"></td>
-    )
+class Cell extends React.Component {
+    render() {
+        return (
+            <td className="cell" onMouseEnter={this.props.onMouseEnter} onMouseDown={this.props.onMouseDown} onMouseUp={this.props.onMouseUp} ></td>
+        )
+    }
 }
+
+export default Cell;
