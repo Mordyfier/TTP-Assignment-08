@@ -2,12 +2,19 @@ html, body {
   margin: none;
   background-color: #333;
   font-family: 'Raleway', sans-serif;
-  height: 100vh;
-  width: 100vw;
+  height: 90vh;
+  width: 90vw;
 }
 
 .App {
-  height: 100vh;
+  height: 90vh;
+  width: 100vw;
+}
+
+.title{
+  color: whitesmoke;
+  text-align: center;
+  margin-bottom: 0;
   width: 100vw;
 }
 
@@ -18,6 +25,7 @@ html, body {
   align-items: center;
   margin-bottom: 20px;
   height: 100px;
+  width: 100vw;
 }
 
 .controls > button {

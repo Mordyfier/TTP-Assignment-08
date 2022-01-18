@@ -131,14 +131,14 @@ class App extends Component {
       <div className="App" onMouseDown={this.mouseDrag} onMouseUp={this.mouseDrag}>
         <h1 className='title'>Create and Color Your Own Grid</h1>
         <div className='controls'>
-          <button onClick={this.addRow}>Add Row</button>
-          <button onClick={this.removeRow}>Remove Row</button>
-          <button onClick={this.addCol}>Add Column</button>
-          <button onClick={this.removeCol}>Remove Column</button>
           <div className='color-select'>
             <h5>Select Colour:</h5>
             <input type="color" onChange={this.changeColorState} className='color-selector' value={this.state.color}/>
           </div>
+          <button onClick={this.addRow}>Add Row</button>
+          <button onClick={this.removeRow}>Remove Row</button>
+          <button onClick={this.addCol}>Add Column</button>
+          <button onClick={this.removeCol}>Remove Column</button>
           <button onClick={this.fillUncolored}>Fill Uncolored</button>
           <button onClick={this.fillAll}>Fill All</button>
           <button onClick={this.clearAll}>Clear All</button>
