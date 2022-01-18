@@ -8,8 +8,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      rowsNum: 0,
-      cellsNum: 0,
+      rowsNum: 120,
+      cellsNum: 120,
       color: "#ffffff",
       mouseDown: false
     });

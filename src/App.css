@@ -80,10 +80,8 @@ body {
 
 .cell {
   border: none;
-  border-radius: 5px;
-  width: 65px;
-  height: 65px;
-  margin-left: 3px;
-  margin-top: 3px;
+  margin: 0;
+  width: .5px;
+  height: .5px;
   background-color: white;
 }
