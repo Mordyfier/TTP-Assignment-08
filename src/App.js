@@ -86,8 +86,10 @@ class App extends Component {
   }
 
   mouseDrag(e) {
-    if (e.type === 'mousedown' && e.target.className === 'cell') {
-      e.target.style.backgroundColor = this.state.color;
+    if (e.type === 'mousedown') {
+      if (e.target.className === 'cell') {
+        e.target.style.backgroundColor = this.state.color;
+      }
       if (!this.state.mouseDown) {
         this.setState({mouseDown: true});
       }
@@ -126,7 +128,8 @@ class App extends Component {
     
     return (
 
-      <div className="App">
+      <div className="App" onMouseDown={this.mouseDrag} onMouseUp={this.mouseDrag}>
+        <h1 className='title'>Create and Color Your Own Grid</h1>
         <div className='controls'>
           <button onClick={this.addRow}>Add Row</button>
           <button onClick={this.removeRow}>Remove Row</button>
@@ -141,9 +144,7 @@ class App extends Component {
           <button onClick={this.clearAll}>Clear All</button>
         </div>
         <Table 
-          populate={this.renderTable()}
-          onMouseDown={this.mouseDrag} 
-          onMouseUp={this.mouseDrag} 
+          populate={this.renderTable()}   
         />
       </div>
     )
