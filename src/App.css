@@ -4,6 +4,11 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.title{
+  color: whitesmoke;
+  text-align: center;
+}
+
 .controls {
   display: flex;
   justify-content: center;
@@ -46,12 +51,13 @@ body {
   width: 8%;
   align-items: center;
   flex-direction: column;
-  margin-right: 10px;
+  margin-right: 60px;
+  padding-top: 3px;
   background-color: #666;
   border-radius: 5px;
 }
 
-.color-select > h5 {
+.color-select > h6 {
   margin-block: 0px 5px;
   padding-left: 5px;
   height: 25%;
@@ -64,6 +70,7 @@ body {
   border-radius: 5px;
   background-color: #666; /* ??? */
   color: whitesmoke;
+
   height: 60%;
   width: 80%;
 }
